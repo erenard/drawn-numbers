@@ -1,26 +1,25 @@
 <template>
   <canvas
     ref="canvas"
-    width="640"
-    height="480"
+    width="960"
+    height="720"
     @click="handleClick"
   />
 </template>
 <script>
 import framebuffer from '@/framebuffer.js'
+import numbers from '@/numbers.js'
 
 export default {
   name: 'Canvas',
-  data: () => ({
-  }),
   mounted () {
     framebuffer.init(this.$refs.canvas)
   },
   methods: {
     handleClick () {
       framebuffer.begin()
-      framebuffer.setPixel(10, 10)
-      framebuffer.plotCircle(100, 100, 75)
+      numbers.drawNumberOne(100, 100, 32)
+      numbers.drawNumberOne(150, 100, 64)
       framebuffer.end()
     }
   }
@@ -28,7 +27,7 @@ export default {
 </script>
 <style type="text/css">
 canvas {
-  background-color: white;
-  border: solid 1px black;
+  background-color: black;
+  border: solid 1px white;
 }
 </style>

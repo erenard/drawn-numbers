@@ -3,19 +3,32 @@ import bresenham from '@/bresenham.js'
 let canvasContext, imageData, width, height
 
 window.setPixel = function (x, y) {
-  let subpixel = 4 * (x + y * width)
-  imageData.data[subpixel++] = 0
-  imageData.data[subpixel++] = 0
-  imageData.data[subpixel++] = 0
-  imageData.data[subpixel++] = 255
+  x *= 3
+  y *= 3
+  for (let xx = -1; xx < 2; xx++) {
+    for (let yy = -1; yy < 2; yy++) {
+      let subpixel = 4 * (x + xx + (y + yy) * width)
+      imageData.data[subpixel++] = 255
+      imageData.data[subpixel++] = 255
+      imageData.data[subpixel++] = 255
+      imageData.data[subpixel] = 255
+    }
+  }
 }
 
 window.setPixelAA = function (x, y, alpha) {
-  let subpixel = 4 * (x + y * width)
-  imageData.data[subpixel++] = 0
-  imageData.data[subpixel++] = 0
-  imageData.data[subpixel++] = 0
-  imageData.data[subpixel++] = alpha
+  x *= 3
+  y *= 3
+  for (let xx = -1; xx < 2; xx++) {
+    for (let yy = -1; yy < 2; yy++) {
+      let subpixel = 4 * (x + xx + (y + yy) * width)
+      const value = imageData.data[subpixel] + 255 - alpha
+      imageData.data[subpixel++] = value
+      imageData.data[subpixel++] = value
+      imageData.data[subpixel++] = value
+      imageData.data[subpixel] = 255
+    }
+  }
 }
 
 export default {
