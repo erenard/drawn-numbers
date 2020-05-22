@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * Bresenham Curve Rasterizing Algorithms
  * @author  Zingl Alois
