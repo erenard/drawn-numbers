@@ -7,21 +7,21 @@
   />
 </template>
 <script>
-import canvas from '@/canvas.js'
-import '@/bresenham.js'
+import framebuffer from '@/framebuffer.js'
 
 export default {
   name: 'Canvas',
   data: () => ({
   }),
   mounted () {
-    canvas.init(this.$refs.canvas)
+    framebuffer.init(this.$refs.canvas)
   },
   methods: {
     handleClick () {
-      canvas.getImageData()
-      canvas.setPixel(10, 10)
-      canvas.putImageData()
+      framebuffer.begin()
+      framebuffer.setPixel(10, 10)
+      framebuffer.plotCircle(100, 100, 75)
+      framebuffer.end()
     }
   }
 }

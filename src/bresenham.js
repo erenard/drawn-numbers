@@ -1131,4 +1131,38 @@ function plotCubicBezierSegWidth(x0,y0, x1,y1, x2,y2, x3,y3, th)
       Math.floor((x0+3*x1+2)/4),Math.floor((y0+3*y1+2)/4), x,y, 1,th);
    plotQuadRationalBezierWidthSeg(x,y, 
       Math.floor((3*x2+x3+2)/4),Math.floor((3*y2+y3+2)/4), x3,y3, 1,th);
-}   
+}
+
+export default {
+  plotLine,
+  plotEllipse,
+  plotCircle,
+  plotEllipseRect,
+  plotQuadBezierSeg,
+  plotQuadBezier,
+  plotQuadRationalBezierSeg,
+  plotQuadRationalBezier,
+  plotRotatedEllipse,
+  plotRotatedEllipseRect,
+  plotCubicBezierSeg,
+  plotCubicBezier,
+  plotLineAA,
+  plotCircleAA,
+  plotEllipseRectAA,
+  plotQuadBezierSegAA,
+  plotQuadBezierAA,
+  plotQuadRationalBezierSegAA,
+  plotQuadRationalBezierAA,
+  plotRotatedEllipseAA,
+  plotRotatedEllipseRectAA,
+  plotCubicBezierSegAA,
+  plotCubicBezierAA,
+  plotLineWidth,
+  plotEllipseRectWidth,
+  plotQuadRationalBezierWidthSeg,
+  plotQuadRationalBezierWidth,
+  plotRotatedEllipseWidth,
+  plotRotatedEllipseRectWidth,
+  plotCubicBezierWidth,
+  plotCubicBezierSegWidth
+}

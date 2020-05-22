@@ -1,3 +1,5 @@
+import bresenham from '@/bresenham.js'
+
 let canvasContext, imageData, width, height
 
 window.setPixel = function (x, y) {
@@ -22,14 +24,14 @@ export default {
     width = canvasElement.width
     height = canvasElement.height
   },
-  getImageData () {
+  begin () {
     // Uint8ClampedArray
     imageData = canvasContext.getImageData(0, 0, width, height)
   },
-  putImageData () {
-    // Uint8ClampedArray
+  end () {
     canvasContext.putImageData(imageData, 0, 0)
   },
   setPixel: window.setPixel,
-  setPixelAA: window.setPixelAA
+  setPixelAA: window.setPixelAA,
+  ...bresenham
 }
