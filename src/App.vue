@@ -1,16 +1,27 @@
 <template>
   <div id="app">
-    <Canvas />
+    <Screen :is-wide-screen="isWideScreen">
+      <Canvas />
+    </Screen>
+    <input
+      v-model="isWideScreen"
+      type="checkbox"
+    >
   </div>
 </template>
 
 <script>
 import Canvas from './components/Canvas.vue'
+import Screen from './components/Screen.vue'
 export default {
   name: 'App',
   components: {
-    Canvas
-  }
+    Canvas,
+    Screen
+  },
+  data: () => ({
+    isWideScreen: false
+  })
 }
 </script>
 
