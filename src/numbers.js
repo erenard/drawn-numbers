@@ -17,10 +17,83 @@ export default {
     const right = x + size * 4
     const top = y - size * 19
     const bottom = y - size
-    // framebuffer.plotLine(x - 5 * size, y, x + 5 * size, y)
-    // framebuffer.plotLine(x - 5 * size, bottom, x + 5 * size, bottom)
-    // framebuffer.plotLine(x, y + 5 * size, x, y - 20 * size)
     switch (number) {
+      case 0:
+        // Elipsis
+        framebuffer.plotEllipseRectWidth(
+          left, top,
+          right, bottom,
+          size
+        )
+        // Center dot
+        framebuffer.plotEllipseRectWidth(
+          x - size, y - size * 12,
+          x + size, y - size * 8,
+          size
+        )
+        break
+      case 1:
+        // Diagonal
+        framebuffer.plotQuadRationalBezierWidth(
+          x, top,
+          x, y - size * 15,
+          x - size * 3, y - size * 15,
+          1,
+          size
+        )
+        // Vertical
+        framebuffer.plotLineWidth(
+          x, top,
+          x, bottom,
+          size
+        )
+        // Horizontal
+        framebuffer.plotLineWidth(
+          x - size * 3, bottom,
+          x + size * 3, bottom,
+          size
+        )
+        break
+      case 2:
+        // Top part, top right
+        framebuffer.plotQuadRationalBezierWidth(
+          right, y - size * 15,
+          right, top,
+          x, top,
+          1,
+          size
+        )
+        // Top part, top left
+        framebuffer.plotQuadRationalBezierWidth(
+          x, top,
+          left, top,
+          left, y - size * 15,
+          1,
+          size
+        )
+        // Top part, bottom right
+        framebuffer.plotQuadRationalBezierWidth(
+          x, y - size * 8,
+          right, y - size * 12,
+          right, y - size * 15,
+          1,
+          size
+        )
+        // Bottom part, bottom left
+        framebuffer.plotQuadRationalBezierWidth(
+          x, y - size * 8,
+          left, y - size * 4,
+          left, bottom,
+          1,
+          size
+        )
+        // Horizontal
+        framebuffer.plotLineWidth(
+          left, bottom,
+          right, bottom,
+          size
+        )
+        break
       case 3:
         // Bottom part, bottom left
         framebuffer.plotQuadRationalBezierWidth(
@@ -68,6 +141,26 @@ export default {
           left, top,
           left, y - size * 15,
           1,
+          size
+        )
+        break
+      case 4:
+        // Vertical
+        framebuffer.plotLineWidth(
+          x + size * 2, top,
+          x + size * 2, bottom,
+          size
+        )
+        // Diagonal
+        framebuffer.plotLineWidth(
+          x + size * 2, top,
+          left, y - size * 6,
+          size
+        )
+        // Horizontal
+        framebuffer.plotLineWidth(
+          left, y - size * 6,
+          right, y - size * 6,
           size
         )
         break
@@ -180,7 +273,7 @@ export default {
           right, top,
           size
         )
-        // Diagonale
+        // Diagonal
         framebuffer.plotQuadRationalBezierWidth(
           right, top,
           x, y - size * 10,
