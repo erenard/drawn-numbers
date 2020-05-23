@@ -173,6 +173,22 @@ export default {
           size
         )
         break
+      case 7:
+        // Horizontal top
+        framebuffer.plotLineWidth(
+          left, top,
+          right, top,
+          size
+        )
+        // Diagonale
+        framebuffer.plotQuadRationalBezierWidth(
+          right, top,
+          x, y - size * 10,
+          x - size * 2, bottom,
+          1,
+          size
+        )
+        break
       case 8:
         // Bottom part, bottom left
         framebuffer.plotQuadRationalBezierWidth(
