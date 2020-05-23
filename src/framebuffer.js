@@ -2,11 +2,13 @@ import bresenham from '@/bresenham.js'
 
 let canvasContext, imageData, width, height
 
+const zoom = 3
+
 window.setPixel = function (x, y) {
-  x *= 3
-  y *= 3
-  for (let xx = -1; xx < 2; xx++) {
-    for (let yy = -1; yy < 2; yy++) {
+  x *= zoom
+  y *= zoom
+  for (let xx = 0; xx < zoom; xx++) {
+    for (let yy = 0; yy < zoom; yy++) {
       let subpixel = 4 * (x + xx + (y + yy) * width)
       imageData.data[subpixel++] = 255
       imageData.data[subpixel++] = 255
@@ -17,12 +19,12 @@ window.setPixel = function (x, y) {
 }
 
 window.setPixelAA = function (x, y, alpha) {
-  x *= 3
-  y *= 3
-  for (let xx = -1; xx < 2; xx++) {
-    for (let yy = -1; yy < 2; yy++) {
+  x *= zoom
+  y *= zoom
+  for (let xx = 0; xx < zoom; xx++) {
+    for (let yy = 0; yy < zoom; yy++) {
       let subpixel = 4 * (x + xx + (y + yy) * width)
-      const value = imageData.data[subpixel] + 255 - alpha
+      const value = Math.max(imageData.data[subpixel], 255 - alpha)
       imageData.data[subpixel++] = value
       imageData.data[subpixel++] = value
       imageData.data[subpixel++] = value
