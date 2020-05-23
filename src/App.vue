@@ -6,7 +6,8 @@
     <input
       v-model="isWideScreen"
       type="checkbox"
-    >
+      name="isWideScreen"
+    ><label for="isWideScreen">Wide screen</label>
   </div>
 </template>
 
@@ -20,7 +21,7 @@ export default {
     Screen
   },
   data: () => ({
-    isWideScreen: false
+    isWideScreen: true
   })
 }
 </script>

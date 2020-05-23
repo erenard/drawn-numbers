@@ -3,7 +3,6 @@
     ref="canvas"
     width="960"
     height="720"
-    @click="handleClick"
   />
 </template>
 <script>
@@ -14,9 +13,10 @@ export default {
   name: 'Canvas',
   mounted () {
     framebuffer.init(this.$refs.canvas)
+    this.drawNumbers()
   },
   methods: {
-    handleClick () {
+    drawNumbers () {
       framebuffer.begin()
 
       for (let i = 0; i < 8; i++) {
