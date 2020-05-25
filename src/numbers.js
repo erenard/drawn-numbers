@@ -27,8 +27,8 @@ export default {
         )
         // Center dot
         framebuffer.plotEllipseRectWidth(
-          x - size, y - size * 12,
-          x + size, y - size * 8,
+          x - size, y - size * 11,
+          x + size, y - size * 9,
           size
         )
         break
