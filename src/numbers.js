@@ -1,7 +1,7 @@
 import framebuffer from '@/framebuffer.js'
 
 export default {
-  drawNumber (number, x, y, size = 4) {
+  drawNumber (number, x, y, size = 4, width = 1) {
     /**
      * Draw a number
      * positive width  20 =  5 * size
@@ -23,13 +23,13 @@ export default {
         framebuffer.plotEllipseRectWidth(
           left, top,
           right, bottom,
-          size
+          width
         )
         // Center dot
         framebuffer.plotEllipseRectWidth(
           x - size, y - size * 11,
           x + size, y - size * 9,
-          size
+          width
         )
         break
       case 1:
@@ -39,19 +39,19 @@ export default {
           x, y - size * 15,
           x - size * 3, y - size * 15,
           1,
-          size
+          width
         )
         // Vertical
         framebuffer.plotLineWidth(
           x, top,
           x, bottom,
-          size
+          width
         )
         // Horizontal
         framebuffer.plotLineWidth(
           x - size * 3, bottom,
           x + size * 3, bottom,
-          size
+          width
         )
         break
       case 2:
@@ -61,7 +61,7 @@ export default {
           right, top,
           x, top,
           1,
-          size
+          width
         )
         // Top part, top left
         framebuffer.plotQuadRationalBezierWidth(
@@ -69,7 +69,7 @@ export default {
           left, top,
           left, y - size * 15,
           1,
-          size
+          width
         )
         // Top part, bottom right
         framebuffer.plotQuadRationalBezierWidth(
@@ -77,7 +77,7 @@ export default {
           right, y - size * 12,
           right, y - size * 15,
           1,
-          size
+          width
         )
         // Bottom part, bottom left
         framebuffer.plotQuadRationalBezierWidth(
@@ -85,13 +85,13 @@ export default {
           left, y - size * 4,
           left, bottom,
           1,
-          size
+          width
         )
         // Horizontal
         framebuffer.plotLineWidth(
           left, bottom,
           right, bottom,
-          size
+          width
         )
         break
       case 3:
@@ -101,7 +101,7 @@ export default {
           left, bottom,
           x, bottom,
           1,
-          size
+          width
         )
         // Bottom part, bottom right
         framebuffer.plotQuadRationalBezierWidth(
@@ -109,7 +109,7 @@ export default {
           right, bottom,
           right, y - size * 6,
           1,
-          size
+          width
         )
         // Bottom part, top right
         framebuffer.plotQuadRationalBezierWidth(
@@ -117,7 +117,7 @@ export default {
           right, y - size * 11,
           x, y - size * 11,
           1,
-          size
+          width
         )
         // Top part, bottom right
         framebuffer.plotQuadRationalBezierWidth(
@@ -125,7 +125,7 @@ export default {
           right, y - size * 11,
           right, y - size * 15,
           1,
-          size
+          width
         )
         // Top part, top right
         framebuffer.plotQuadRationalBezierWidth(
@@ -133,7 +133,7 @@ export default {
           right, top,
           x, top,
           1,
-          size
+          width
         )
         // Top part, top left
         framebuffer.plotQuadRationalBezierWidth(
@@ -141,7 +141,7 @@ export default {
           left, top,
           left, y - size * 15,
           1,
-          size
+          width
         )
         break
       case 4:
@@ -149,19 +149,19 @@ export default {
         framebuffer.plotLineWidth(
           x + size * 2, top,
           x + size * 2, bottom,
-          size
+          width
         )
         // Diagonal
         framebuffer.plotLineWidth(
           x + size * 2, top,
           left, y - size * 6,
-          size
+          width
         )
         // Horizontal
         framebuffer.plotLineWidth(
           left, y - size * 6,
           right, y - size * 6,
-          size
+          width
         )
         break
       case 5:
@@ -171,7 +171,7 @@ export default {
           left, bottom,
           x, bottom,
           1,
-          size
+          width
         )
         // Bottom right
         framebuffer.plotQuadRationalBezierWidth(
@@ -179,7 +179,7 @@ export default {
           right, bottom,
           right, y - size * 6,
           1,
-          size
+          width
         )
         // Middle right
         framebuffer.plotQuadRationalBezierWidth(
@@ -187,7 +187,7 @@ export default {
           right, y - size * 12,
           x, y - size * 12,
           1,
-          size
+          width
         )
         // Middle left
         framebuffer.plotQuadRationalBezierWidth(
@@ -195,19 +195,19 @@ export default {
           x - size * 3, y - size * 12,
           left, y - size * 10,
           1,
-          size
+          width
         )
         // Vertical left
         framebuffer.plotLineWidth(
           left, top,
           left, y - size * 10,
-          size
+          width
         )
         // Horizontal top
         framebuffer.plotLineWidth(
           left, top,
           right, top,
-          size
+          width
         )
         break
       case 6:
@@ -217,7 +217,7 @@ export default {
           left, bottom,
           x, bottom,
           1,
-          size
+          width
         )
         // Bottom right
         framebuffer.plotQuadRationalBezierWidth(
@@ -225,7 +225,7 @@ export default {
           right, bottom,
           right, y - size * 6,
           1,
-          size
+          width
         )
         // Middle right
         framebuffer.plotQuadRationalBezierWidth(
@@ -233,7 +233,7 @@ export default {
           right, y - size * 12,
           x, y - size * 12,
           1,
-          size
+          width
         )
         // Middle left
         framebuffer.plotQuadRationalBezierWidth(
@@ -241,13 +241,13 @@ export default {
           left, y - size * 12,
           left, y - size * 6,
           1,
-          size
+          width
         )
         // Vertical left
         framebuffer.plotLineWidth(
           left, y - size * 15,
           left, y - size * 6,
-          size
+          width
         )
         // Top left
         framebuffer.plotQuadRationalBezierWidth(
@@ -255,7 +255,7 @@ export default {
           left, top,
           left, y - size * 15,
           1,
-          size
+          width
         )
         // Top right
         framebuffer.plotQuadRationalBezierWidth(
@@ -263,7 +263,7 @@ export default {
           right, top,
           x, top,
           1,
-          size
+          width
         )
         break
       case 7:
@@ -271,7 +271,7 @@ export default {
         framebuffer.plotLineWidth(
           left, top,
           right, top,
-          size
+          width
         )
         // Diagonal
         framebuffer.plotQuadRationalBezierWidth(
@@ -279,7 +279,7 @@ export default {
           x, y - size * 10,
           x - size * 2, bottom,
           1,
-          size
+          width
         )
         break
       case 8:
@@ -289,7 +289,7 @@ export default {
           left, bottom,
           x, bottom,
           1,
-          size
+          width
         )
         // Bottom part, bottom right
         framebuffer.plotQuadRationalBezierWidth(
@@ -297,7 +297,7 @@ export default {
           right, bottom,
           right, y - size * 6,
           1,
-          size
+          width
         )
         // Bottom part, top right
         framebuffer.plotQuadRationalBezierWidth(
@@ -305,7 +305,7 @@ export default {
           right, y - size * 11,
           x, y - size * 11,
           1,
-          size
+          width
         )
         // Bottom part, top left
         framebuffer.plotQuadRationalBezierWidth(
@@ -313,7 +313,7 @@ export default {
           left, y - size * 11,
           left, y - size * 6,
           1,
-          size
+          width
         )
         // Top part, bottom right
         framebuffer.plotQuadRationalBezierWidth(
@@ -321,7 +321,7 @@ export default {
           right, y - size * 11,
           right, y - size * 15,
           1,
-          size
+          width
         )
         // Top part, top right
         framebuffer.plotQuadRationalBezierWidth(
@@ -329,7 +329,7 @@ export default {
           right, top,
           x, top,
           1,
-          size
+          width
         )
         // Top part, top left
         framebuffer.plotQuadRationalBezierWidth(
@@ -337,7 +337,7 @@ export default {
           left, top,
           left, y - size * 15,
           1,
-          size
+          width
         )
         // Top part, bottom left
         framebuffer.plotQuadRationalBezierWidth(
@@ -345,7 +345,7 @@ export default {
           left, y - size * 11,
           x, y - size * 11,
           1,
-          size
+          width
         )
         break
       case 9:
@@ -355,7 +355,7 @@ export default {
           left, bottom,
           x, bottom,
           1,
-          size
+          width
         )
         // Bottom right
         framebuffer.plotQuadRationalBezierWidth(
@@ -363,13 +363,13 @@ export default {
           right, bottom,
           right, y - size * 5,
           1,
-          size
+          width
         )
         // Vertical right
         framebuffer.plotLineWidth(
           right, y - size * 14,
           right, y - size * 5,
-          size
+          width
         )
         // Top right
         framebuffer.plotQuadRationalBezierWidth(
@@ -377,7 +377,7 @@ export default {
           right, top,
           x, top,
           1,
-          size
+          width
         )
         // Top left
         framebuffer.plotQuadRationalBezierWidth(
@@ -385,7 +385,7 @@ export default {
           left, top,
           left, y - size * 14,
           1,
-          size
+          width
         )
         // Middle left
         framebuffer.plotQuadRationalBezierWidth(
@@ -393,7 +393,7 @@ export default {
           left, y - size * 8,
           x, y - size * 8,
           1,
-          size
+          width
         )
         // Middle right
         framebuffer.plotQuadRationalBezierWidth(
@@ -401,7 +401,7 @@ export default {
           right, y - size * 8,
           right, y - size * 14,
           1,
-          size
+          width
         )
         break
       default:

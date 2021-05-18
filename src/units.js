@@ -1,7 +1,7 @@
 import framebuffer from '@/framebuffer.js'
 
 export default {
-  degreeCelcuis (x, y, size = 4) {
+  degreeCelcuis (x, y, size = 4, width = 1) {
     /**
      * Draw a °C
      * positive width  20 =  5 * size
@@ -21,17 +21,17 @@ export default {
     framebuffer.plotEllipseRectWidth(
       left, top,
       right, bottom,
-      size
+      width
     )
     // Center dot
     framebuffer.plotEllipseRectWidth(
       x - size, y - size * 11,
       x + size, y - size * 9,
-      size
+      width
     )
   },
 
-  kilometersPerHour (x, y, size = 4) {
+  kilometersPerHour (x, y, size = 4, width = 1) {
     /**
      * Draw a km/h
      * positive width  20 =  5 * size
@@ -51,25 +51,25 @@ export default {
     framebuffer.plotLineWidth(
       left, top,
       left, bottom,
-      size
+      width
     )
 
     framebuffer.plotLineWidth(
       x - size * 3, y - size * 6,
       x, y - size * 12,
-      size
+      width
     )
 
     framebuffer.plotLineWidth(
       x - size * 3, y - size * 6,
       x, bottom,
-      size
+      width
     )
     // m -- first vert
     framebuffer.plotLineWidth(
       x + size * 2, y - size * 12,
       x + size * 2, bottom,
-      size
+      width
     )
 
     framebuffer.plotQuadRationalBezierWidth(
@@ -77,14 +77,14 @@ export default {
       x + size * 6, y - size * 12,
       x + size * 6, y - size * 8,
       1,
-      size
+      width
     )
 
     // m -- middle vert
     framebuffer.plotLineWidth(
       x + size * 6, y - size * 12,
       x + size * 6, bottom,
-      size
+      width
     )
 
     framebuffer.plotQuadRationalBezierWidth(
@@ -92,28 +92,28 @@ export default {
       x + size * 10, y - size * 12,
       x + size * 10, y - size * 8,
       1,
-      size
+      width
     )
 
     // m -- last vert
     framebuffer.plotLineWidth(
       x + size * 10, y - size * 8,
       x + size * 10, bottom,
-      size
+      width
     )
 
     // /
     framebuffer.plotLineWidth(
       x + size * 13, top,
       x + size * 11, bottom,
-      size
+      width
     )
 
     // h
     framebuffer.plotLineWidth(
       x + size * 14, top,
       x + size * 14, bottom,
-      size
+      width
     )
 
     framebuffer.plotQuadRationalBezierWidth(
@@ -121,13 +121,13 @@ export default {
       x + size * 18, y - size * 12,
       x + size * 18, y - size * 8,
       1,
-      size
+      width
     )
 
     framebuffer.plotLineWidth(
       x + size * 18, y - size * 8,
       x + size * 18, bottom,
-      size
+      width
     )
   }
 }
