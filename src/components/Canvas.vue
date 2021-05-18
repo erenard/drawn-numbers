@@ -8,35 +8,38 @@
 <script>
 import framebuffer from '@/framebuffer.js'
 import numbers from '@/numbers.js'
+import units from '@/units.js'
 
 export default {
   name: 'Canvas',
   mounted () {
     framebuffer.init(this.$refs.canvas)
-    this.drawNumbers()
+    this.draw()
   },
   methods: {
-    drawNumbers () {
+    clear () {
+      framebuffer.begin()
+      framebuffer.clear()
+      framebuffer.end()
+    },
+    draw () {
       framebuffer.begin()
 
-      for (let i = 0; i < 8; i++) {
-        numbers.drawNumber(i, 20 + i * 40, 80)
-      }
-      for (let i = 8; i < 10; i++) {
-        numbers.drawNumber(i, 20 + i * 40, 180)
-      }
+      numbers.drawNumber(1, 20, 80)
+      numbers.drawNumber(2, 60, 80)
+      numbers.drawNumber(3, 100, 80)
+      units.kilometersPerHour(140, 80)
 
-      for (let i = 0; i < 10; i++) {
-        numbers.drawNumber(i, 15 + i * 30, 240, 3)
-      }
+      numbers.drawNumber(1, 20, 120, 2)
+      numbers.drawNumber(2, 40, 120, 2)
+      numbers.drawNumber(3, 60, 120, 2)
+      units.kilometersPerHour(80, 120, 2)
 
-      for (let i = 0; i < 10; i++) {
-        numbers.drawNumber(i, 100 + i * 20, 180, 2)
-      }
-
-      for (let i = 0; i < 10; i++) {
-        numbers.drawNumber(i, 100 + i * 10, 120, 1)
-      }
+      numbers.drawNumber(1, 20, 200)
+      numbers.drawNumber(2, 60, 200)
+      numbers.drawNumber(3, 100, 200)
+      units.kilometersPerHour(130, 150, 1)
+      numbers.drawNumber(5, 140, 200, 2)
 
       framebuffer.end()
     }

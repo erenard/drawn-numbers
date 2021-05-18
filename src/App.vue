@@ -31,5 +31,12 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
   background-color: dimgray;
+  display: flex;
+  flex-direction: column;
+}
+label {
+  display: inline-flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 </style>

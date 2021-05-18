@@ -2,7 +2,7 @@ import bresenham from '@/bresenham.js'
 
 let canvasContext, imageData, width, height
 
-const zoom = 3
+const zoom = 1
 
 window.setPixel = function (x, y) {
   x *= zoom
@@ -42,6 +42,9 @@ export default {
   begin () {
     // Uint8ClampedArray
     imageData = canvasContext.getImageData(0, 0, width, height)
+  },
+  clear () {
+    imageData.data.fill(0)
   },
   end () {
     canvasContext.putImageData(imageData, 0, 0)
