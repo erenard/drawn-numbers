@@ -21,7 +21,7 @@ export default {
     Screen
   },
   data: () => ({
-    isWideScreen: true
+    isWideScreen: false
   })
 }
 </script>

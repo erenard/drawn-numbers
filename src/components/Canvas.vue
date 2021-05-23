@@ -1,8 +1,8 @@
 <template>
   <canvas
     ref="canvas"
-    width="960"
-    height="720"
+    width="768"
+    height="480"
   />
 </template>
 <script>
@@ -12,36 +12,44 @@ import units from '@/units.js'
 
 export default {
   name: 'Canvas',
+  data: () => ({
+    speed: 0
+  }),
+  computed: {
+    speedDigits () {
+      const a = Math.floor(this.speed / 100)
+      const b = Math.floor(this.speed / 10) - a * 10
+      const c = Math.floor(this.speed) - a * 100 - b * 10
+      const d = Math.floor((this.speed - a * 100 - b * 10 - c) * 10)
+      return [a, b, c, d]
+    }
+  },
   mounted () {
     framebuffer.init(this.$refs.canvas)
-    this.draw()
+    this.animationFrame()
   },
   methods: {
-    clear () {
-      framebuffer.begin()
-      framebuffer.clear()
-      framebuffer.end()
-    },
     draw () {
       framebuffer.begin()
+      framebuffer.clear()
 
-      numbers.drawNumber(1, 20, 80)
-      numbers.drawNumber(2, 60, 80)
-      numbers.drawNumber(3, 100, 80)
-      units.kilometersPerHour(140, 80)
-
-      numbers.drawNumber(1, 20, 120, 2)
-      numbers.drawNumber(2, 40, 120, 2)
-      numbers.drawNumber(3, 60, 120, 2)
-      units.kilometersPerHour(80, 120, 2)
-
-      numbers.drawNumber(1, 20, 200)
-      numbers.drawNumber(2, 60, 200)
-      numbers.drawNumber(3, 100, 200)
-      units.kilometersPerHour(130, 150, 1)
-      numbers.drawNumber(5, 140, 200, 2)
+      let i = 0.5
+      const size = 12
+      numbers.drawNumber(this.speedDigits[0], i++ * size * 10, 240, size, 3)
+      numbers.drawNumber(this.speedDigits[1], i++ * size * 10, 240, size, 3)
+      numbers.drawNumber(this.speedDigits[2], i++ * size * 10, 240, size, 3)
+      numbers.drawNumber(this.speedDigits[3], i * size * 10, 240, size / 2, 3)
+      units.kilometersPerHour(i++ * size * 10, 120, size / 2, 3)
 
       framebuffer.end()
+    },
+    animationFrame () {
+      this.speed += 0.1
+      this.speed %= 200
+      this.draw()
+      window.requestAnimationFrame(() => {
+        this.animationFrame()
+      })
     }
   }
 }
