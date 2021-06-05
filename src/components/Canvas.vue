@@ -8,10 +8,17 @@
 <script>
 import framebuffer from '@/framebuffer.js'
 import numbers from '@/numbers.js'
+import widget from '@/temperature.js'
 import units from '@/units.js'
 
 export default {
   name: 'Canvas',
+  props: {
+    isRunning: {
+      type: Boolean,
+      required: true
+    }
+  },
   data: () => ({
     speed: 0
   }),
@@ -20,36 +27,44 @@ export default {
       const a = Math.floor(this.speed / 100)
       const b = Math.floor(this.speed / 10) - a * 10
       const c = Math.floor(this.speed) - a * 100 - b * 10
-      const d = Math.floor((this.speed - a * 100 - b * 10 - c) * 10)
-      return [a, b, c, d]
+      return [a, b, c]
+    }
+  },
+  watch: {
+    isRunning (newValue) {
+      if (newValue) {
+        this.animationFrame()
+      }
     }
   },
   mounted () {
     framebuffer.init(this.$refs.canvas)
-    this.animationFrame()
+    if (this.isRunning) this.animationFrame()
   },
   methods: {
     draw () {
       framebuffer.begin()
       framebuffer.clear()
 
-      let i = 0.5
       const size = 12
-      numbers.drawNumber(this.speedDigits[0], i++ * size * 10, 240, size, 3)
-      numbers.drawNumber(this.speedDigits[1], i++ * size * 10, 240, size, 3)
-      numbers.drawNumber(this.speedDigits[2], i++ * size * 10, 240, size, 3)
-      numbers.drawNumber(this.speedDigits[3], i * size * 10, 240, size / 2, 3)
-      units.kilometersPerHour(i++ * size * 10, 120, size / 2, 3)
+      if (this.speed > 99) numbers.drawNumber(this.speedDigits[0], 0.5 * size * 10, 240, size, 3)
+      if (this.speed > 9) numbers.drawNumber(this.speedDigits[1], 1.5 * size * 10, 240, size, 3)
+      numbers.drawNumber(this.speedDigits[2], 2.5 * size * 10, 240, size, 3)
+      units.kilometersPerHour(3.5 * size * 10, 240, size / 2, 3)
+
+      widget.drawTemperatureWidget(200, 400, 100)
 
       framebuffer.end()
     },
     animationFrame () {
-      this.speed += 0.1
-      this.speed %= 200
+      this.speed += 1
+      this.speed %= 255
       this.draw()
-      window.requestAnimationFrame(() => {
-        this.animationFrame()
-      })
+      if (this.isRunning) {
+        window.requestAnimationFrame(() => {
+          this.animationFrame()
+        })
+      }
     }
   }
 }

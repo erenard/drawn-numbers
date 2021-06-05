@@ -1,13 +1,18 @@
 <template>
   <div id="app">
     <Screen :is-wide-screen="isWideScreen">
-      <Canvas />
+      <Canvas :is-running="isRunning" />
     </Screen>
-    <input
-      v-model="isWideScreen"
-      type="checkbox"
-      name="isWideScreen"
-    ><label for="isWideScreen">Wide screen</label>
+    <div class="controls">
+      <button @click="toggleRunning">
+        Start/Stop
+      </button>
+      <input
+        v-model="isWideScreen"
+        type="checkbox"
+        name="isWideScreen"
+      ><label for="isWideScreen">Wide screen</label>
+    </div>
   </div>
 </template>
 
@@ -21,8 +26,14 @@ export default {
     Screen
   },
   data: () => ({
-    isWideScreen: false
-  })
+    isWideScreen: false,
+    isRunning: false
+  }),
+  methods: {
+    toggleRunning () {
+      this.isRunning = !this.isRunning
+    }
+  }
 }
 </script>
 
@@ -33,6 +44,10 @@ export default {
   background-color: dimgray;
   display: flex;
   flex-direction: column;
+}
+.controls {
+  display: flex;
+  justify-content: center;
 }
 label {
   display: inline-flex;

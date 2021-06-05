@@ -26,11 +26,11 @@ export default {
           width
         )
         // Center dot
-        framebuffer.plotEllipseRectWidth(
-          x - size, y - size * 11,
-          x + size, y - size * 9,
-          width
-        )
+        // framebuffer.plotEllipseRectWidth(
+        //   x - size, y - size * 11,
+        //   x + size, y - size * 9,
+        //   width
+        // )
         break
       case 1:
         // Diagonal
@@ -48,11 +48,11 @@ export default {
           width
         )
         // Horizontal
-        framebuffer.plotLineWidth(
-          x - size * 3, bottom,
-          x + size * 3, bottom,
-          width
-        )
+        // framebuffer.plotLineWidth(
+        //   x - size * 3, bottom,
+        //   x + size * 3, bottom,
+        //   width
+        // )
         break
       case 2:
         // Top part, top right
